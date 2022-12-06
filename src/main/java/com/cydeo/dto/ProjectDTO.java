@@ -1,5 +1,6 @@
 package com.cydeo.dto;
 import com.cydeo.enums.Status;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,7 +39,12 @@ public class ProjectDTO {
 
     private Status projectStatus;
 
+    // we want to see those tow when we retrieve the task, so I use Jason property Read Only
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private int completeTaskCounts;
+
+    // we want to see those tow when we retrieve the task, so I use Jason property Read Only
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private int unfinishedTaskCounts;
 
     public ProjectDTO(String projectName, String projectCode, UserDTO assignedManager, LocalDate startDate, LocalDate endDate, String projectDetail, Status projectStatus) {
