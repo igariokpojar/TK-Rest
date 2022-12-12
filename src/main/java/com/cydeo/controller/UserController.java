@@ -1,5 +1,6 @@
 package com.cydeo.controller;
 
+import com.cydeo.annotation.ExecutionTime;
 import com.cydeo.dto.ResponseWrapper;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.exception.TicketingProjectException;
@@ -24,6 +25,7 @@ public class UserController { // controller classes are sending http request
         this.userService = userService;
     }
     @GetMapping
+    @ExecutionTime
     // let's start to secure all the End points by add annotation @RolesAllowed
     @RolesAllowed({"Manager","Admin"})
     @Operation(summary = "Get users")
@@ -33,6 +35,7 @@ public class UserController { // controller classes are sending http request
     }
 
     @GetMapping("/{username}")
+    @ExecutionTime
     @RolesAllowed({"Admin"})
     @Operation(summary = "Get users by username")
     public ResponseEntity<ResponseWrapper> getUsersByUserName(@PathVariable("username")String userName){
